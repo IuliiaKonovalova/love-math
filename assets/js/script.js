@@ -14,6 +14,9 @@ document.addEventListener('DOMContentLoaded', function () {
                }
           });
      }
+
+     //add EventListener for the key: "Enter" to submit answer
+
      document
           .getElementById('answer-box')
           .addEventListener('keydown', function (event) {
