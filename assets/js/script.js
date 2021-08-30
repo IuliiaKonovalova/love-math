@@ -45,7 +45,7 @@ function runGame(gameType) {
      } else if (gameType === 'multiply') {
           displayMultiplyQuestion(num1, num2);
      } else if (gameType === 'division') {
-          displayMultiplyDivision(num1, num2);
+          displayDivisionQuestion(num1, num2);
      } else {
           alert(`Unknown game type: ${gameType}`);
           throw `Unknown game type: ${gameType}. Aborting!`;
@@ -60,11 +60,12 @@ function checkAnswer() {
      let userAnswer = parseInt(document.getElementById('answer-box').value);
      let calculatedAnswer = calculateCorrectAnswer();
      let isCorrect = userAnswer === calculatedAnswer[0];
-
+     // Alert and incrementing scores if the answer is correct
      if (isCorrect) {
           alert('Hey! You got it right! :D');
           incrementScore();
      } else {
+          // Alert and incrementing incorrect scores if the answer is incorrect
           alert(
                `Awwww.... you answered ${userAnswer}. The correct answer was ${calculatedAnswer[0]}!`
           );
@@ -115,12 +116,15 @@ function incrementWrongAnswer() {
      document.getElementById('incorrect').innerText = ++oldScore;
 }
 
+//Addition Questions
+
 function displayAdditionQuestion(operand1, operand2) {
      document.getElementById('operand1').textContent = operand1;
      document.getElementById('operand2').textContent = operand2;
      document.getElementById('operator').textContent = '+';
 }
 
+//Subtract Questions
 function displaySubtractQuestion(operand1, operand2) {
      document.getElementById('operand1').textContent =
           operand1 > operand2 ? operand1 : operand2;
@@ -129,15 +133,18 @@ function displaySubtractQuestion(operand1, operand2) {
      document.getElementById('operator').textContent = '-';
 }
 
+// Multiply Questions
+
 function displayMultiplyQuestion(operand1, operand2) {
      document.getElementById('operand1').textContent = operand1;
      document.getElementById('operand2').textContent = operand2;
      document.getElementById('operator').textContent = '*';
 }
 
-function displayMultiplyDivision(operand1, operand2) {
-     document.getElementById('operand1').textContent =
-          operand1 > operand2 ? operand1 : operand2;
+//Division Questions
+
+function displayDivisionQuestion(operand1, operand2) {
+     document.getElementById('operand1').textContent = operand1 * operand2;
      document.getElementById('operand2').textContent =
           operand1 > operand2 ? operand2 : operand1;
      document.getElementById('operator').textContent = '/';
